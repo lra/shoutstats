@@ -33,10 +33,11 @@ if(!file_exists(SS_PATH_GFX))
 foreach ($servers as $c_name => $c_server)
 {
 	if ($c_name == $server) : ?>
-		<option value="<?=$c_name?>" selected><?=$c_name?></option>
-	<? else: ?>
-		<option value="<?=$c_name?>"><?=$c_name?></option>
-	<? endif;
+                <option value="<?=$c_name?>" selected><?=$c_name?> (<?=$servers[$c_name]['type']?>)</option>
+        <? else: ?>
+                <option value="<?=$c_name?>"><?=$c_name?> (<?=$servers[$c_name]['type']?>)</option>
+        <? endif;
+
 }
 ?>
 </select>
@@ -47,29 +48,30 @@ foreach ($servers as $c_name => $c_server)
 <?
 // a specific server has been selected
 if(strlen($server)):
+if($servers[$server]['type']=='icecast') $mp=".".$servers[$server]['mpoint'];
 
 // generate and display the 24 hours server specific graph
 $txt_freq = 'hourly';
-$rrdgfx=SS_PATH_GFX."/hourly-{$servers[$server]['host']}.{$servers[$server]['port']}.png";
-$rrdfile=SS_PATH_RRD."/{$servers[$server]['host']}.{$servers[$server]['port']}.rrd";
+$rrdgfx=SS_PATH_GFX."/hourly-{$servers[$server]['host']}.{$servers[$server]['port']}{$mp}.png";
+$rrdfile=SS_PATH_RRD."/{$servers[$server]['host']}.{$servers[$server]['port']}{$mp}.rrd";
 exec(SS_RRDTOOL_COMMAND . " graph $rrdgfx --lazy -l 0 -a PNG DEF:myaudience=$rrdfile:audience:AVERAGE LINE2:myaudience#FF0000");
 DisplayGraph($txt_freq, $rrdgfx);
 
 // generate and display the 7 days server specific graph
 $txt_freq = 'daily';
-$rrdgfx=SS_PATH_GFX."/daily-{$servers[$server]['host']}.{$servers[$server]['port']}.png";
+$rrdgfx=SS_PATH_GFX."/daily-{$servers[$server]['host']}.{$servers[$server]['port']}{$mp}.png";
 exec(SS_RRDTOOL_COMMAND . " graph $rrdgfx --lazy -l 0 -a PNG -s e-1w DEF:myaudience=$rrdfile:audience:AVERAGE LINE2:myaudience#FF0000");
 DisplayGraph($txt_freq, $rrdgfx);
 
 // generate and display the 5 weeks server specific graph
 $txt_freq = 'weekly';
-$rrdgfx=SS_PATH_GFX."/weekly-{$servers[$server]['host']}.{$servers[$server]['port']}.png";
+$rrdgfx=SS_PATH_GFX."/weekly-{$servers[$server]['host']}.{$servers[$server]['port']}{$mp}.png";
 exec(SS_RRDTOOL_COMMAND . " graph $rrdgfx --lazy -l 0 -a PNG -s e-5w DEF:myaudience=$rrdfile:audience:AVERAGE LINE2:myaudience#FF0000");
 DisplayGraph($txt_freq, $rrdgfx);
 
 // generate and display the 12 months server specific graph
 $txt_freq = 'monthly';
-$rrdgfx=SS_PATH_GFX."/monthly-{$servers[$server]['host']}.{$servers[$server]['port']}.png";
+$rrdgfx=SS_PATH_GFX."/monthly-{$servers[$server]['host']}.{$servers[$server]['port']}{$mp}.png";
 exec(SS_RRDTOOL_COMMAND . " graph $rrdgfx --lazy -l 0 -a PNG -s e-1y DEF:myaudience=$rrdfile:audience:AVERAGE LINE2:myaudience#FF0000");
 DisplayGraph($txt_freq, $rrdgfx);
 
@@ -80,7 +82,8 @@ $rrdexecend = ' ';
 $i = 0;
 foreach ($servers as $n => $s)
 {
-	$rrdfile = SS_PATH_RRD."/{$s['host']}.{$s['port']}.rrd";
+	$mp=""; if($s['type']=='icecast') $mp=".".$s['mpoint'];
+        $rrdfile = SS_PATH_RRD."/{$s['host']}.{$s['port']}{$mp}.rrd";
 	$rrdexecend .= "DEF:myaudience$i=$rrdfile:audience:AVERAGE ";
 	$rrdexecend .= "CDEF:audience$i=myaudience$i,UN,0,myaudience$i,IF ";
 	$i++;
