@@ -102,6 +102,37 @@ function GetShoutcastStats($host, $port)
 	return $server;
 }
 
+function GetIcecastStats($host,$port,$mp)
+{
+  $fp = fsockopen($host, $port, $errno, $errstr, 30);
+
+  // can't connect =(
+  if (!$fp) {
+        print("$errstr ($errno)<br>\n");
+        $server['current'] = 0;
+        $server['max'] = 0;
+  // oh yes, it can connect
+  } else {
+      fputs($fp, "GET /status2.xsl?mount=/".$mp." HTTP/1.0\r\nUser-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)\r\n\r\n");
+      while (!feof($fp)) {
+          $content .= fgets($fp,128);
+      }
+      fclose($fp);
+
+      $debut = strpos($content, $mp) + strlen($mp);
+      $fin = strpos($content, '</pre>', $debut);
+      $string = substr($content, $debut, $fin - $debut);
+      $stats = explode(',', $string);
+      $server['current'] = $stats[3];
+
+  }
+        // debug
+        //print("{$string}\n");
+        //print("$host:$port = {$server['current']}\n");
+  return $server;
+}
+
+
 //
 // Template used to display each generated graph
 //
