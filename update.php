@@ -10,8 +10,17 @@ if(!file_exists(SS_PATH_RRD))
 
 foreach ($servers as $n => $s)
 {
-	$rddfile = SS_PATH_RRD.'/'.$s['host'].'.'.$s['port'].'.rrd';
-	$audience[$i] = GetShoutcastStats($s['host'], $s['port']);
+	if($s["type"]=="shoutcast")
+        {
+                $audience[$i]=GetShoutcastStats($s["host"],$s["port"]);
+                $rddfile = SS_PATH_RRD."/{$s["host"]}.".$s["port"].".rrd";
+        }
+        else
+        {
+                $audience[$i]=GetIcecastStats($s["host"],$s["port"],$s["mpoint"]);
+                $rddfile = SS_PATH_RRD."/{$s["host"]}.".$s["port"].".{$s["mpoint"]}.rrd";
+        }
+
 	if(!file_exists($rddfile))
 	{
 		system(SS_RRDTOOL_COMMAND.
