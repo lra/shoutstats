@@ -1,0 +1,45 @@
+Shoutstats
+
+Introduction
+~~~~~~~~~~~~
+Shoutstats is a fast, free Shoutcast server statistic analysis program.
+It produces instant and dynamic usage reports in HTML format, for viewing in a
+standard browser.
+
+Shoutstats is a bunch of php scripts and a rrdtools database.
+
+It has been written under a Debian GNU/Linux.
+
+That's all for now !
+
+Required
+~~~~~~~~
+- PHP 4
+- rrdtools
+- One or more shoutcast servers
+- a crontab
+- wget
+
+License
+~~~~~~~
+Shoutstat - let's humanize your shoutcast stats
+Copyright (C) 2000,2004 Laurent Raufaste
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
+Contacts and website
+~~~~~~~~~~~~~~~~~~~~
+The main webpage for shoutstats is http://www.glop.org/shoutstats
+Please send any suggestions, bugfixes, or anything else to analogue@glop.org

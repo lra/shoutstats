@@ -1,0 +1,55 @@
+shoutstats 0.8.5
+
+shoutstats 0.8.4
+- Fixed a bug occuring under a default PHP5 install
+
+shoutstats 0.8.3
+- XHTML/1.1 and CSS2 compliant
+- Added a new configuration file to set up your station name and the rrdtool
+  path
+- Some cosmetic changes
+
+shoutstats 0.8.2:
+- updated some links
+- rrdtool binary can now be defined
+
+shoutstats 0.8.1:
+- fixed a stupid bug which prevented shoutstats to get any the stat at all.
+
+shoutstats 0.8.0:
+- fixed a bug link bug under Opera.
+- fixed the bug which would reset the total graph after adding a new server
+- changed the format of the configuration file
+- added the possibility to name the servers
+- cosmetic changes
+
+shoutstats 0.7.1:
+- fixed the listener count when a server is down
+
+shoutstats 0.7:
+- rrdtools database instead of SQL
+- rewritten everything around rrdtools
+
+shoutstats 0.6:
+- internal release
+
+shoutstats 0.5:
+- password no longer needed to get stats from the servers
+- code cleaning
+- public release
+- added month and year stats
+- added a setup interface
+
+shoutstats 0.4:
+- SQL engine
+- Internal release
+
+shoutstats 0.3:
+- Enhanced portability
+- Bugfixes
+
+shoutstats 0.2:
+- Added support for 99+ simultaneous listeners
+
+shoutstats 0.1:
+- Initial release, works fine for me.

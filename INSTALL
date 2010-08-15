@@ -1,0 +1,17 @@
+Installation of Shoutstats is pretty simple:
+
+- Make sure rrdtools and PHP are correctly installed and running.
+
+- Do some "tar zxvf shoutstats-*.tar.gz" in the directory you want shoutstats to be avalaible on the www (let's suppose it's /var/www)
+
+- cd to your shoutstats directory, eg. /var/www/shoutstats
+
+- Edit the "config.ini" file and edit the parameters as you like.
+
+- Edit the "servers.ini" file and add your shoutcasts servers in it.
+
+- Make sure the "gfx" and "rrd" folders in your shoutstats directory are chmod 777. If not, do "chmod 777 gfx rrd"
+
+- You can now put the following line in your crontab:
+  */5 * * * * /usr/bin/wget -q -O /tmp/update.php --delete-after http://your.host.com/shoutstats/update.php
+  You can change the frequency. The more frequent, the more precise your stats will be.
