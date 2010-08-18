@@ -16,6 +16,7 @@ if(!file_exists(SS_PATH_GFX))
  <? else: ?>
  <title>Shoutstats for <?=SS_NAME?></title>
  <? endif; ?>
+ <meta http-equiv="refresh" content="300" />
  <link rel="stylesheet" href="shoutstats.css" type="text/css" media="screen" />
 </head>
 <body>
