@@ -2,7 +2,7 @@ Shoutstats
 
 Introduction
 ~~~~~~~~~~~~
-Shoutstats is a fast, free Shoutcast server statistic analysis program.
+Shoutstats is a fast, free Shoutcast and Icecast server statistic analysis program.
 It produces instant and dynamic usage reports in HTML format, for viewing in a
 standard browser.
 
@@ -16,7 +16,7 @@ Required
 ~~~~~~~~
 - PHP 4
 - rrdtools
-- One or more shoutcast servers
+- One or more shoutcast and/or icecast servers
 - a crontab
 - wget
 
