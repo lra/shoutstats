@@ -13,5 +13,5 @@ Installation of Shoutstats is pretty simple:
 - Make sure the "gfx" and "rrd" folders in your shoutstats directory are chmod 777. If not, do "chmod 777 gfx rrd"
 
 - You can now put the following line in your crontab:
-  */5 * * * * root /usr/bin/wget -q -O /tmp/update.php --delete-after http://your.host.com/shoutstats/update.php
+  */5 * * * * /usr/bin/wget -q -O /tmp/update.php --delete-after http://your.host.com/shoutstats/update.php
   You can change the frequency. The more frequent, the more precise your stats will be.
