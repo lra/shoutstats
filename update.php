@@ -24,7 +24,7 @@ foreach ($servers as $n => $s)
 	if(!file_exists($rddfile))
 	{
 		system(SS_RRDTOOL_COMMAND.
-			   ' create '.$rddfile.
+			   ' create '.$rddfile.' '.
 			   'DS:audience:GAUGE:600:U:U '.
 			   'RRA:AVERAGE:0.5:1:288 '.
 			   'RRA:AVERAGE:0.5:6:336 '.
