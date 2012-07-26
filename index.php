@@ -1,4 +1,4 @@
-<?
+<?php
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 require('sslib.php');
 
@@ -11,33 +11,33 @@ if(!file_exists(SS_PATH_GFX))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 <head>
- <? if (strlen($server)) : ?>
- <title>Shoutstats for <?=SS_NAME?> - <?=$server?></title>
- <? else: ?>
- <title>Shoutstats for <?=SS_NAME?></title>
- <? endif; ?>
+ <?php if (strlen($server)) : ?>
+ <title>Shoutstats for <?php echo SS_NAME?> - <?php echo $server?></title>
+ <?php else: ?>
+ <title>Shoutstats for <?php echo SS_NAME?></title>
+ <?php endif; ?>
  <meta http-equiv="refresh" content="300" />
  <link rel="stylesheet" href="shoutstats.css" type="text/css" media="screen" />
 </head>
 <body>
 
-<h1>Shoutstats for <?=SS_NAME?></h1>
+<h1>Shoutstats for <?php echo SS_NAME?></h1>
 
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="get">
+<form action="<?php echo basename($SCRIPT_FILENAME)?>" method="get">
 <fieldset>
 <legend>Shoutstats Server Selection</legend>
 <label for="server">Show statistics for</label>
 <select name="server" id="server">
 <option value="">All servers together</option>
-<?
+<?php
 // combobox items generation of a list of server
 foreach ($servers as $c_name => $c_server)
 {
 	if ($c_name == $server) : ?>
-                <option value="<?=$c_name?>" selected><?=$c_name?> (<?=$servers[$c_name]['type']?>)</option>
-        <? else: ?>
-                <option value="<?=$c_name?>"><?=$c_name?> (<?=$servers[$c_name]['type']?>)</option>
-        <? endif;
+                <option value="<?php echo $c_name?>" selected><?php echo $c_name?> (<?php echo $servers[$c_name]['type']?>)</option>
+        <?php else: ?>
+                <option value="<?php echo $c_name?>"><?php echo $c_name?> (<?php echo $servers[$c_name]['type']?>)</option>
+        <?php endif;
 
 }
 ?>
@@ -46,7 +46,7 @@ foreach ($servers as $c_name => $c_server)
 </fieldset>
 </form>
 
-<?
+<?php
 // a specific server has been selected
 if(strlen($server)):
 if($servers[$server]['type']=='icecast') $mp=".".$servers[$server]['mpoint'];
@@ -135,7 +135,7 @@ endif;
 <p>
 <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>
 <a href="http://www.glop.org/shoutstats/">Shoutstats</a> 
-<a href="CHANGES"><?=SS_VERSION?></a> -
+<a href="CHANGES"><?php echo SS_VERSION?></a> -
 <a href="http://validator.w3.org/check?uri=referer">XHTML/1.1</a> and 
 <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS2</a> compliant
 </p>

@@ -142,8 +142,8 @@ function DisplayGraph($txt_freq, $rrdgfx)
 	$size = GetImageSize($rrdgfx);
 ?>
 <p>
-<?=$txt_freq?> graph:<br />
-<img src="<?=$rrdgfx?>" <?=$size[3]?> alt="<?=$txt_freq?> graph" /><br />
+<?php echo $txt_freq?> graph:<br />
+<img src="<?php echo $rrdgfx?>" <?php echo $size[3]?> alt="<?php echo $txt_freq?> graph" /><br />
 </p>
-<?
+<?php
 }
