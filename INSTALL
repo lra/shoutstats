@@ -1,6 +1,6 @@
 Installation of Shoutstats is pretty simple:
 
-- Make sure rrdtools and PHP are correctly installed and running.
+- Make sure rrdtool and PHP are correctly installed and running.
 
 - Do some "tar zxvf shoutstats-*.tar.gz" in the directory you want shoutstats to be avalaible on the www (let's suppose it's /var/www)
 
